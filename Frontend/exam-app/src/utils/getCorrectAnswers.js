@@ -1,4 +1,4 @@
-export const getCorrectAnswers = (questions) => {
+const getCorrectAnswers = (questions) => {
   
     const correctAnswers = [];
   
@@ -10,3 +10,5 @@ export const getCorrectAnswers = (questions) => {
 
   return correctAnswers;
 };
+
+export default getCorrectAnswers; 

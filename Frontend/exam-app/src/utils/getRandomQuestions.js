@@ -3,10 +3,12 @@ const generateRandomIndex = (n) => {
 }
 
 
-export const getRandomQuestions = (questions)=>{
+const getRandomQuestions = (questions)=>{
 
+    console.log(questions);
     let n = questions.length;
-    let randomIndex = getRandomQuestions(n);
+    console.log(n);
+    let randomIndex = generateRandomIndex(n);
 
     let randomQuestions = [];
     for(let i = 0; i < 5; i++){
@@ -15,4 +17,7 @@ export const getRandomQuestions = (questions)=>{
     }
 
     return randomQuestions;
-}
+}; 
+
+export default getRandomQuestions;
+

@@ -1,24 +1,23 @@
+/* eslint-disable import/first */
 import React, { useState } from 'react'; 
-import { connect } from 'react-redux';
-import questions from '../db'; 
-import { 
-    getRandomQuestions, 
-    getCorrectAnswers
-} from '../utils/getRandomQuestions';
-
-
 import {
     Box, Stepper, Step,
     StepLabel, StepContent,
     Button, Typography,
-    // RadioButtonGroup, RadioButton,
-    // FormControlLabel, FormControl,
-    // FormLabel, RadioGroup,
-    // FormHelperText, TextField,
+    Radio,
+    CircularProgress, 
 } from '@material-ui/core'; 
 
+import { connect } from 'react-redux';
+import questions from '../db'; 
+
+import  getRandomQuestions  from '../utils/getRandomQuestions';
+import  getCorrectAnswers  from '../utils/getCorrectAnswers';   
+
+
 const randomQuestions = getRandomQuestions(questions);
-const getCorrectAnswers = getCorrectAnswers(randomQuestions);
+const correctAnswers = getCorrectAnswers(randomQuestions);
+console.log(randomQuestions, correctAnswers);
 
 const steps = [
     "Question 1",

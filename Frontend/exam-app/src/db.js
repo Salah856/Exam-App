@@ -1,4 +1,4 @@
-export const questions = [
+const questions = [
 
     {
         text: "What is the name of Egypt capital? ", 
@@ -55,5 +55,7 @@ export const questions = [
         correct: 'Graphite',
     }, 
 
-]
+]; 
 
+
+export default questions;
