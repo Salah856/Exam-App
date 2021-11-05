@@ -1,22 +1,21 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const bodyParser = require('body-parser');
+const router = require('./controllers/exam'); 
+import { MongoConnection } from './db/mongoService';
 
 
+app.use(bodyParser.json());
 app.use(cors());
-
-app.get('/get-questions', (req, res)=>{
-
-
-    res.json()
-});
-
-
-
+app.use('/api', router);
 
 
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!');
+    MongoConnection.connect(app);
 });
+
+
 
 
