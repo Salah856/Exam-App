@@ -94,9 +94,9 @@ const QuestionsStepper = ({
         setUsersAnswers([...usersAnswers, selectedAnswer]);
     };
     
-    const handleBack = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    };
+    // const handleBack = () => {
+    //     setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    // };
 
     
     
@@ -153,14 +153,6 @@ const QuestionsStepper = ({
         <>
           <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-            <Button
-              color="inherit"
-              disabled={activeStep === 0}
-              onClick={handleBack}
-              sx={{ mr: 1 }}
-            >
-              Back
-            </Button>
             <Box sx={{ flex: '1 1 auto' }} />
 
             <Button onClick={handleNext}>
