@@ -33,6 +33,7 @@ function App() {
         
                 />
                 <Button
+                  color="primary"
                   onClick={() => {
                     setUserName(userName);
                     setSubmitted(true);
@@ -45,7 +46,9 @@ function App() {
 
         }
 
-         {userName && submitted && <QuestionsStepper />}
+         {
+            userName && submitted && <QuestionsStepper />
+         }
        
 
        
