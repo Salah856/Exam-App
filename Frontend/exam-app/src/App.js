@@ -25,7 +25,7 @@ function App() {
         </header>
         {
           show && !submitted && (
-            <>
+            <div style={{marginTop: 200}}>
                 <TextField
                   id="outlined-basic"
                   label="User Name"
@@ -47,7 +47,7 @@ function App() {
                 > 
                   Submit Name 
                 </Button>
-            </>
+            </div>
           )
 
         }

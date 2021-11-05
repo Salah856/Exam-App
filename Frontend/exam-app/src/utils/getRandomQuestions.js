@@ -7,15 +7,10 @@ const getRandomQuestions = (questions)=>{
 
     console.log(questions);
     let n = questions.length;
-    console.log(n);
     let randomIndex = generateRandomIndex(n);
 
-    let randomQuestions = [];
-    for(let i = 0; i < 5; i++){
-        randomQuestions.push(questions[randomIndex]);
-        randomIndex = generateRandomIndex(n);
-    }
-
+    let randomQuestions = questions.slice(randomIndex, randomIndex + 5);
+    console.log(randomQuestions);
     return randomQuestions;
 }; 
 
