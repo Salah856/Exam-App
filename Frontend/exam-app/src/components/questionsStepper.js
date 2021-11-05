@@ -1,5 +1,32 @@
 import React, { useState } from 'react'; 
 import { connect } from 'react-redux';
+import {
+    Box, 
+    Stepper, 
+    Step,
+    StepLabel,
+    StepContent,
+    Button,
+    Typography,
+    RadioButtonGroup,
+    RadioButton,
+    FormControlLabel,
+    FormControl,
+    FormLabel,
+    RadioGroup,
+    FormHelperText,
+    TextField,
+} from '@material-ui/core'; 
+
+
+const steps = [
+    "Question 1",
+    "Question 2",
+    "Question 3",
+    "Question 4",
+    "Question 5"
+]; 
+
 
 import { 
     GET_QUESTIONS, 
