@@ -11,10 +11,10 @@ import {
     Box, Stepper, Step,
     StepLabel, StepContent,
     Button, Typography,
-    RadioButtonGroup, RadioButton,
-    FormControlLabel, FormControl,
-    FormLabel, RadioGroup,
-    FormHelperText, TextField,
+    // RadioButtonGroup, RadioButton,
+    // FormControlLabel, FormControl,
+    // FormLabel, RadioGroup,
+    // FormHelperText, TextField,
 } from '@material-ui/core'; 
 
 const randomQuestions = getRandomQuestions(questions);
@@ -67,13 +67,13 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const QuestionsStepper = ({
-        questions,
-        userAnswers,
-        finalScore, 
-        getQuestions, 
-        answerQuestion, 
-        getFinalScore, 
-    }) => {
+    questions,
+    userAnswers,
+    finalScore, 
+    getQuestions, 
+    answerQuestion, 
+    getFinalScore, 
+}) => {
 
     const [selectedAnswer, setSelectedAnswer] = useState('');
     const [usersAnswers, setUsersAnswers] = useState([]);
@@ -121,6 +121,7 @@ const QuestionsStepper = ({
                      randomQuestions[index].answers.map((answer) =>{
                          return (
                             <Radio
+                                checked={selectedAnswer === answer}
                                 value={answer}
                                 onChange={handleSelectAnswer}
                                 name={answer}
@@ -157,11 +158,6 @@ const QuestionsStepper = ({
               Back
             </Button>
             <Box sx={{ flex: '1 1 auto' }} />
-            {/* {isStepOptional(activeStep) && (
-              <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                Skip
-              </Button>
-            )} */}
 
             <Button onClick={handleNext}>
               {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
@@ -175,8 +171,6 @@ const QuestionsStepper = ({
 
 
 }; 
-
-
 
 
 
