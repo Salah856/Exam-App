@@ -1,23 +1,24 @@
 import React, { useState } from 'react'; 
 import { connect } from 'react-redux';
+import questions from '../db'; 
+import { 
+    getRandomQuestions, 
+    getCorrectAnswers
+} from '../utils/getRandomQuestions';
+
+
 import {
-    Box, 
-    Stepper, 
-    Step,
-    StepLabel,
-    StepContent,
-    Button,
-    Typography,
-    RadioButtonGroup,
-    RadioButton,
-    FormControlLabel,
-    FormControl,
-    FormLabel,
-    RadioGroup,
-    FormHelperText,
-    TextField,
+    Box, Stepper, Step,
+    StepLabel, StepContent,
+    Button, Typography,
+    RadioButtonGroup, RadioButton,
+    FormControlLabel, FormControl,
+    FormLabel, RadioGroup,
+    FormHelperText, TextField,
 } from '@material-ui/core'; 
 
+const randomQuestions = getRandomQuestions(questions);
+const getCorrectAnswers = getCorrectAnswers(randomQuestions);
 
 const steps = [
     "Question 1",
@@ -74,10 +75,102 @@ const QuestionsStepper = ({
         getFinalScore, 
     }) => {
 
+    const [selectedAnswer, setSelectedAnswer] = useState('');
+    const [usersAnswers, setUsersAnswers] = useState([]);
 
+
+    const [activeStep, setActiveStep] = useState(0);
+
+
+    const handleSelectAnswer = (e) => {
+        let answer = e.target.value;
+        setSelectedAnswer(answer);
+        if (!usersAnswers.includes(answer)) {
+            setUsersAnswers([...usersAnswers, answer]);
+        }
+    }; 
+
+
+    const handleNext = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    };
+    
+    const handleBack = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    };
+
+    const handleReset = () => {
+        setActiveStep(0);
+    };
+    
+    
+    
     return (
+
+    <Box sx={{ width: '100%' }}>
+      <Stepper activeStep={activeStep}>
+        {steps.map((label, index) => {
+          const stepProps = {};
+          const labelProps = {};
+          return (
+            <Step key={label} {...stepProps}>
+              <StepLabel {...labelProps}>{label}</StepLabel>
+              <StepContent>
+                <Typography>{randomQuestions[index].text}</Typography>
+                 {
+                     randomQuestions[index].answers.map((answer) =>{
+                         return (
+                            <Radio
+                                value={answer}
+                                onChange={handleSelectAnswer}
+                                name={answer}
+                                inputProps={{ 'aria-label': answer }}
+                            />
+                         )
+                     })
+                 }
+              </StepContent>
+            </Step>
+          );
+        })}
+      </Stepper>
+      {activeStep === steps.length ? (
+        <React.Fragment>
+          <Typography sx={{ mt: 2, mb: 1 }}>
+            All questions completed - you&apos;re finished
+          </Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+            <Box sx={{ flex: '1 1 auto' }} />
+            {/* <Button onClick={handleReset}>Reset</Button> */}
+          </Box>
+        </React.Fragment>
+      ) : (
         <>
+          <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+            <Button
+              color="inherit"
+              disabled={activeStep === 0}
+              onClick={handleBack}
+              sx={{ mr: 1 }}
+            >
+              Back
+            </Button>
+            <Box sx={{ flex: '1 1 auto' }} />
+            {/* {isStepOptional(activeStep) && (
+              <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
+                Skip
+              </Button>
+            )} */}
+
+            <Button onClick={handleNext}>
+              {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+            </Button>
+          </Box>
         </>
+      )}
+    </Box>
+
     );
 
 
