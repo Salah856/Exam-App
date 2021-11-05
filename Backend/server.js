@@ -13,7 +13,7 @@ app.use('/api', router);
 
 app.listen(4000, function () {
     console.log('Example app listening on port 3000!');
-    MongoConnection.connect(app);
+    MongoConnection.connect();
 });
 
 
