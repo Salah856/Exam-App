@@ -75,10 +75,7 @@ const QuestionsStepper = ({
 
     const [selectedAnswer, setSelectedAnswer] = useState('');
     const [usersAnswers, setUsersAnswers] = useState([]);
-
-
     const [activeStep, setActiveStep] = useState(0);
-
 
     const handleSelectAnswer = (e) => {
         let answer = e.target.value;
@@ -88,16 +85,10 @@ const QuestionsStepper = ({
         }
     }; 
 
-
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
         setUsersAnswers([...usersAnswers, selectedAnswer]);
     };
-    
-    // const handleBack = () => {
-    //     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    // };
-
     
     
     return (
