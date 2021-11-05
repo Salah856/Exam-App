@@ -7,7 +7,7 @@ let initialState = {
 }; 
 
 
-export const questionReducer = (state = initialState, action) => {
+const questionReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_QUESTIONS:
       return {
@@ -32,3 +32,4 @@ export const questionReducer = (state = initialState, action) => {
 
 
 
+export default questionReducer;
