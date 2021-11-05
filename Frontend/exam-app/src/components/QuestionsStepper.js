@@ -90,7 +90,7 @@ const QuestionsStepper = ({
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
         setUsersAnswers([...usersAnswers, selectedAnswer]);
 
-        if (activeStep === steps.length -1) {
+        if (activeStep === steps.length) {
             setIsSubmitted(true);
             // getFinalScore(matchingArrays(correctAnswers, usersAnswers));
         }
@@ -140,8 +140,8 @@ const QuestionsStepper = ({
       {activeStep === steps.length ? (
         <React.Fragment>
           <Typography sx={{ mt: 2, mb: 1 }}>
-            All questions completed - you&apos;re finished 
-            {" "}
+            {/* All questions completed - you&apos;re finished 
+            {" "} */}
            {
              isSubmitted && `your score is ${matchingArrays(correctAnswers, userAnswers)}`
            }
