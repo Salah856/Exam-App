@@ -12,7 +12,7 @@ import questions from '../db';
 
 import  getRandomQuestions  from '../utils/getRandomQuestions';
 import  getCorrectAnswers  from '../utils/getCorrectAnswers';   
-
+import matchArrays from '../utils/matchArrays';
 
 const randomQuestions = getRandomQuestions(questions);
 const correctAnswers = getCorrectAnswers(randomQuestions);
