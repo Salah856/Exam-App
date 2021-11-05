@@ -1,4 +1,4 @@
-import {GET_QUESTIONS, ANSWER_QUESTION} from '../actions/types'; 
+import {GET_QUESTIONS, ANSWER_QUESTION, GET_FINAL_SCORE} from '../actions/types'; 
 
 let initialState = {
   questions: [],
@@ -19,7 +19,11 @@ export const questionReducer = (state = initialState, action) => {
         ...state,
         userAnswers: [...state.userAnswers, action.payload.answer],
       };
-
+    case GET_FINAL_SCORE:
+      return {
+        ...state,
+        finalScore: action.payload.score,
+      };
     default:
       return state;
   }
