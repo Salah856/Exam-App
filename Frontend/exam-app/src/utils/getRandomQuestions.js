@@ -5,7 +5,6 @@ const generateRandomIndex = (n) => {
 
 const getRandomQuestions = (questions)=>{
 
-    console.log(questions);
     let n = questions.length;
     let randomIndex = generateRandomIndex(n);
 

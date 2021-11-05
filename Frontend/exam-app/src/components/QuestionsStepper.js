@@ -81,9 +81,6 @@ const QuestionsStepper = ({
     const handleSelectAnswer = (e) => {
         let answer = e.target.value;
         setSelectedAnswer(answer);
-        if (!usersAnswers.includes(answer)) {
-            setUsersAnswers([...usersAnswers, answer]);
-        }
     }; 
 
     const handleNext = () => {
@@ -92,7 +89,6 @@ const QuestionsStepper = ({
 
         if (activeStep === steps.length -1) {
             setIsSubmitted(true);
-            // getFinalScore(matchingArrays(correctAnswers, usersAnswers));
         }
     };
     
@@ -142,8 +138,10 @@ const QuestionsStepper = ({
           <Typography sx={{ mt: 2, mb: 1 }}>
             All questions completed - you&apos;re finished 
             {"  "}
+            
            {
-             isSubmitted && `,  your score is ${matchingArrays(correctAnswers, userAnswers)}`
+             isSubmitted && 
+             `,  your score is ${matchingArrays(correctAnswers, usersAnswers)}`
            }
           
           </Typography>

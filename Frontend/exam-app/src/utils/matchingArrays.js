@@ -1,5 +1,7 @@
 const matchArrays = (a, b) => {
     
+    console.log(a, b)
+    
     let correctCounter = 0; 
 
     a.forEach((el, index)=>{
