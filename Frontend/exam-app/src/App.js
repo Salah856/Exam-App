@@ -15,11 +15,8 @@ function App() {
   
   let name = prompt('Enter your name');
     
-  if (name) {
-    setUserName(name);
-  }
+  name && setUserName(name);
    
-  
   return (
     <Provider store={store}>
       <div className="App">
