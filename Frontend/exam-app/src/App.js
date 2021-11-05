@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {TextField} from '@material-ui/core';
+import {TextField, Button} from '@material-ui/core';
 import './App.css';
 import { createStore } from 'redux';
 
@@ -13,6 +13,7 @@ let store = createStore(rootReducer);
 function App() {
 
   const [userName, setUserName] = useState('');
+  const [submitted, setSubmitted] = useState(false);
   
   
   return (
@@ -22,16 +23,29 @@ function App() {
           <h1>Exam App</h1>
         </header>
         {
-          !userName && <TextField
-            id="outlined-basic"
-            label="User Name"
-            variant="outlined"
-            onChange={(e) => setUserName(e.target.value)}
-      
-          />
+          !userName && !submitted (
+            <>
+                <TextField
+                  id="outlined-basic"
+                  label="User Name"
+                  variant="outlined"
+                  onChange={(e) => setUserName(e.target.value)}
+        
+                />
+                <Button
+                  onClick={() => {
+                    setUserName(userName);
+                    setSubmitted(true);
+                  }}
+                > 
+                  Submit Name 
+                </Button>
+            </>
+          )
+
         }
 
-         {userName && <QuestionsStepper />}
+         {userName && submitted && <QuestionsStepper />}
        
 
        
