@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {TextField} from '@material-ui/core';
 import './App.css';
 import { createStore } from 'redux';
 
@@ -13,20 +14,25 @@ function App() {
 
   const [userName, setUserName] = useState('');
   
-  let name = prompt('Enter your name');
-    
-  name && setUserName(name);
-   
+  
   return (
     <Provider store={store}>
       <div className="App">
         <header>
           <h1>Exam App</h1>
         </header>
-        
-       {
-         userName && <QuestionsStepper />
-       }
+        {
+          !userName && <TextField
+            id="outlined-basic"
+            label="User Name"
+            variant="outlined"
+            onChange={(e) => setUserName(e.target.value)}
+      
+          />
+        }
+
+         {userName && <QuestionsStepper />}
+       
 
        
       </div>

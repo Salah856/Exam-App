@@ -1,11 +1,10 @@
 /* eslint-disable import/first */
 import React, { useState } from 'react'; 
 import {
-    Box, Stepper, Step,
-    StepLabel, StepContent,
-    Button, Typography,
-    Radio,
-    CircularProgress, 
+    Box, Stepper, Step, StepLabel, 
+    StepContent, Button, Typography,
+    Radio, RadioGroup, FormControl,
+    FormLabel, FormControlLabel,
 } from '@material-ui/core'; 
 
 import { connect } from 'react-redux';
@@ -116,19 +115,26 @@ const QuestionsStepper = ({
               <StepLabel {...labelProps}>{label}</StepLabel>
               <StepContent>
                 <Typography>{randomQuestions[index].text}</Typography>
+                <FormControl component="fieldset">
+                  <FormLabel component="legend">Answers</FormLabel>
+                    <RadioGroup
+                      aria-label="answers"
+                      defaultValue=""
+                      name="radio-buttons-group"
+                    ></RadioGroup>
+
                  {
-                     randomQuestions[index].answers.map((answer) =>{
-                         return (
-                            <Radio
-                                checked={selectedAnswer === answer}
-                                value={answer}
-                                onChange={handleSelectAnswer}
-                                name={answer}
-                                inputProps={{ 'aria-label': answer }}
-                            />
-                         )
+                    randomQuestions[index].answers.map((answer) => {
+                      return (
+                        <FormControlLabel 
+                              value={answer}
+                              control={<Radio />} 
+                              label={answer} 
+                          />
+                        )
                      })
                  }
+                 </FormControl>
               </StepContent>
             </Step>
           );
@@ -141,7 +147,6 @@ const QuestionsStepper = ({
           </Typography>
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Box sx={{ flex: '1 1 auto' }} />
-            {/* <Button onClick={handleReset}>Reset</Button> */}
           </Box>
         </React.Fragment>
       ) : (
