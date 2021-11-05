@@ -75,6 +75,7 @@ const QuestionsStepper = ({
 
     const [selectedAnswer, setSelectedAnswer] = useState('');
     const [usersAnswers, setUsersAnswers] = useState([]);
+    const [isSubmitted, setIsSubmitted] = useState(false);
     const [activeStep, setActiveStep] = useState(0);
 
     const handleSelectAnswer = (e) => {
@@ -88,6 +89,11 @@ const QuestionsStepper = ({
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
         setUsersAnswers([...usersAnswers, selectedAnswer]);
+
+        if (activeStep === steps.length -1) {
+            setIsSubmitted(true);
+            // getFinalScore(matchingArrays(correctAnswers, usersAnswers));
+        }
     };
     
     
@@ -134,7 +140,12 @@ const QuestionsStepper = ({
       {activeStep === steps.length ? (
         <React.Fragment>
           <Typography sx={{ mt: 2, mb: 1 }}>
-            All questions completed - you&apos;re finished
+            All questions completed - you&apos;re finished 
+            {" "}
+           {
+             isSubmitted && `your score is ${matchingArrays(correctAnswers, userAnswers)}`
+           }
+          
           </Typography>
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
             <Box sx={{ flex: '1 1 auto' }} />
