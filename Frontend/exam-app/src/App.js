@@ -14,6 +14,7 @@ function App() {
 
   const [userName, setUserName] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [show, setShow] = useState(true);
   
   
   return (
@@ -23,19 +24,24 @@ function App() {
           <h1>Exam App</h1>
         </header>
         {
-          !userName && !submitted (
+          show && !submitted && (
             <>
                 <TextField
                   id="outlined-basic"
                   label="User Name"
                   variant="outlined"
-                  onChange={(e) => setUserName(e.target.value)}
+                  onChange={
+                    (e) => {
+                      setUserName(e.target.value);
+                    }
+                  }
         
                 />
                 <Button
                   color="primary"
                   onClick={() => {
                     setUserName(userName);
+                    setShow(false);
                     setSubmitted(true);
                   }}
                 > 

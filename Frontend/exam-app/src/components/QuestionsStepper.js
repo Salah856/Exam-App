@@ -12,7 +12,7 @@ import questions from '../db';
 
 import  getRandomQuestions  from '../utils/getRandomQuestions';
 import  getCorrectAnswers  from '../utils/getCorrectAnswers';   
-import matchArrays from '../utils/matchArrays';
+import matchingArrays from '../utils/matchingArrays';
 
 const randomQuestions = getRandomQuestions(questions);
 const correctAnswers = getCorrectAnswers(randomQuestions);
@@ -91,16 +91,13 @@ const QuestionsStepper = ({
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        setUsersAnswers([...usersAnswers, selectedAnswer]);
     };
     
     const handleBack = () => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
-    const handleReset = () => {
-        setActiveStep(0);
-    };
-    
     
     
     return (
@@ -130,6 +127,9 @@ const QuestionsStepper = ({
                               value={answer}
                               control={<Radio />} 
                               label={answer} 
+                              onChange={(e)=>{
+                                setSelectedAnswer(e.target.value);
+                              }}
                           />
                         )
                      })
