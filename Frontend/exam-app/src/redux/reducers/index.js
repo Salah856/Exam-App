@@ -3,6 +3,7 @@ import {GET_QUESTIONS, ANSWER_QUESTION} from '../actions/types';
 let initialState = {
   questions: [],
   userAnswers: [], 
+  finalScore: 0
 }; 
 
 
@@ -18,7 +19,7 @@ export const questionReducer = (state = initialState, action) => {
         ...state,
         userAnswers: [...state.userAnswers, action.payload.answer],
       };
-      
+
     default:
       return state;
   }
