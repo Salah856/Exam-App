@@ -39,13 +39,14 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const QuestionsStepper = ({
-    questions,
-    userAnswers,
-    finalScore, 
-    getQuestions, 
-    answerQuestion}) => {
+        questions,
+        userAnswers,
+        finalScore, 
+        getQuestions, 
+        answerQuestion
+    }) => {
 
-
+        
     return (
         <>
         </>
