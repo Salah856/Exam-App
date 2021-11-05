@@ -43,10 +43,11 @@ const QuestionsStepper = ({
         userAnswers,
         finalScore, 
         getQuestions, 
-        answerQuestion
+        answerQuestion, 
+        getFinalScore, 
     }) => {
 
-        
+
     return (
         <>
         </>
