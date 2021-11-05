@@ -9,13 +9,17 @@ router.get('/questions', (req, res) => {
     let count = Question.count(); 
     let randomIndex =  getRandomIndex(count);
 
-   Question.find().skip(randomIndex).limit(10).toArray((err, questions) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.json(questions);
-        }
-    });
+    if (count > 10){
+        Question.find().skip(randomIndex).limit(10).toArray((err, questions) => {
+            if (err) {
+                console.log(err);
+            } else {
+                res.json(questions);
+            }
+        });
+    } else {
+        res.json([])
+    }
 })
 
 
