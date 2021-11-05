@@ -1,4 +1,4 @@
-import {GET_QUESTIONS} from '../actions/types'; 
+import {GET_QUESTIONS, ANSWER_QUESTION} from '../actions/types'; 
 
 let initialState = {
   questions: [],
@@ -13,6 +13,14 @@ export const questionReducer = (state = initialState, action) => {
         ...state,
         questions: [...state.questions, ...action.payload.questions],
       };
+    case ANSWER_QUESTION:
+      return {
+        ...state,
+        userAnswers: [...state.userAnswers, action.payload.answer],
+      };
+      
+    default:
+      return state;
   }
 };
 

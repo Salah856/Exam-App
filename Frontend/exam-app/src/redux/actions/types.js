@@ -1,3 +1,8 @@
-export const GET_QUESTIONS = 'GET_QUESTIONS';
-export const ANSWER_QUESTION = 'ANSWER_QUESTION';
+const GET_QUESTIONS = 'GET_QUESTIONS';
+const ANSWER_QUESTION = 'ANSWER_QUESTION';
+
+export const ActionTypes = {
+  GET_QUESTIONS,
+  ANSWER_QUESTION,
+};
 
