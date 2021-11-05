@@ -7,12 +7,12 @@ import {
   Routes,
   Route, 
 } from "react-router-dom";
-import { browserHistory } from 'react-router'
+import createHistory from 'history/createBrowserHistory'
 
 import rootReducer from './redux/reducers/index';
 import QuestionsStepper from './components/questionsStepper';
 
-
+let history = createHistory();
 let store = createStore(rootReducer);
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
   
   let name = prompt('Enter your name');
     
-  name && browserHistory.push(`/questions/`);
+  name && history.push(`/questions`);
    
   
   return (
